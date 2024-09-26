@@ -35,7 +35,7 @@ jobs:
       run: |
         echo "Checking the changes made..."
         git status
-        ls -l Files/
+        ls -l configs/
         
     - name: Commit and push files
       uses: EndBug/add-and-commit@v7
