@@ -153,7 +153,7 @@ class SSHS8:
         query_params = parse_qs(parsed_url.query)
         query_params['sni'] = [sni]
         if config_dict.get('Link TR'):
-            query_params['allowinsecure'] = ['true']
+            query_params['allowInsecure'] = ['true']
             TYPE = "TROJAN"
 
         new_query = urlencode(query_params, doseq=True)
