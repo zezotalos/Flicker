@@ -139,8 +139,8 @@ class SSHS8:
             config_dict = self._parse_config_info(config_info)
 
             modified_url = self._modify_config_url(config_dict , sni , title)
-            print("Modified Config URL:")
-            print(modified_url)
+            # print("Modified Config URL:")
+            # print(modified_url)
 
             return {"config_url": modified_url, "config_info": config_dict}
         return None
