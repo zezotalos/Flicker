@@ -9,7 +9,7 @@ fixed_text = """#profile-title: base64:8J+MgCDwnZeU8J2XlfCdl6LwnZet8J2XmPCdl5zwn
 
 # Function to ensure the necessary directories exist
 def ensure_directories_exist():
-    output_folder = os.path.abspath(os.path.join(os.getcwd()))
+    output_folder = os.path.abspath(os.path.join(os.getcwd() , "configs"))
     base64_folder = os.path.join(output_folder, "Base64")
 
     if not os.path.exists(output_folder):

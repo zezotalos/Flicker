@@ -56,6 +56,9 @@ class V2RayClient:
         with open(self.config_path, "w") as f:
             json.dump(config, f, indent=4)
     
+    def delete_config(self):
+        os.remove(self.config_path)
+        
     def start(self):
         """Starts the V2Ray client as a subprocess."""
         try:

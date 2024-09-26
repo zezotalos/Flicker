@@ -4,6 +4,9 @@ import json
 import time
 import os
 from subscription import create_subscription
+
+current_folder = os.getcwd()
+configs_path = os.path.join(current_folder , "configs" , 'configs.txt')
 # 🇫🇷
 
 # Define a mapping from country names to country codes
@@ -152,9 +155,11 @@ def check_v2ray_server(server):
 
         if test_result:
             # print("V2Ray server is working correctly!")
+            client.delete_config()
             return True
         else:
             # print("V2Ray server connection test failed.")
+            client.delete_config()
             return False
 
 
@@ -197,7 +202,7 @@ if __name__ == "__main__":
     Working_List = []
     subscription_list = []
 
-    if not os.path.exists("configs.txt"):
+    if not os.path.exists(configs_path):
         
         servers = create_servers(country_codes=["FR" , "DE"])
 
@@ -248,11 +253,12 @@ if __name__ == "__main__":
                 SSHS8._modify_config_url(SSHS8, config_dict=server , sni="www.ea.com" , title="WE PS"))
 
         create_subscription(subscription_list)
-        with open('configs.txt', 'w', encoding='utf-8') as f:
+        
+        with open(configs_path, 'w', encoding='utf-8') as f:
             f.write(json.dumps(Working_List))
     
     
-    with open('configs.txt', 'r', encoding='utf-8') as f:
+    with open(configs_path, 'r', encoding='utf-8') as f:
         SERVERS = json.loads(f.read())
 
     for server_info in SERVERS:
@@ -287,5 +293,5 @@ if __name__ == "__main__":
 
     create_subscription(subscription_list)
     
-    with open('configs.txt', 'w', encoding='utf-8') as f:
+    with open(configs_path, 'w', encoding='utf-8') as f:
             f.write(json.dumps(Working_List))
