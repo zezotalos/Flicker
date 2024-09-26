@@ -2,12 +2,7 @@ name: Update Configs
 permissions: write-all
 
 on:
-  push:
-    branches:
-      - main
-  schedule:
-    # Run every 10 minutes
-    - cron: "*/10 * * * *"
+  repository_dispatch:
 
 jobs:
   build:
@@ -42,7 +37,7 @@ jobs:
       with:
         author_name: "Github Actions"
         author_email: "actions@github.com"
-        message: "Updated 9 minutes Ago ⚡️"
+        message: "Updated via Appwrite ⚡️"
         add: "."
         push: "https://github.com/zezotalos/Flicker.git"
     env:
