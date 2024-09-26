@@ -213,7 +213,7 @@ if __name__ == "__main__":
             
             country = list(server.keys())[0]
             server = list(server.values())[0]
-            print(server)
+
             V2RAY_SERVER_ADDRESS = server['IP/Host']
             V2RAY_SERVER_PORT = int(server['Port'])
             PROTOCOL = "trojan"
@@ -244,7 +244,7 @@ if __name__ == "__main__":
                 else:
                     print("V2Ray server connection test failed.")
         
-        
+     
         for config in Working_List:
             country = list(config.keys())[0]
             server = list(config.values())[0]
@@ -259,40 +259,41 @@ if __name__ == "__main__":
             f.write(json.dumps(Working_List))
     
     
-    with open(configs_path, 'r', encoding='utf-8') as f:
-        SERVERS = json.loads(f.read())
+    else:
+        with open(configs_path, 'r', encoding='utf-8') as f:
+            SERVERS = json.loads(f.read())
 
-    for server_info in SERVERS:
-        country = list(server_info.keys())[0]
-        server = list(server_info.values())[0]
+        for server_info in SERVERS:
+            country = list(server_info.keys())[0]
+            server = list(server_info.values())[0]
 
-        # Process the server, either returning a working one or None, with retries
-        working_server = process_server(server, country, delay=5 , max_retries=10)
+            # Process the server, either returning a working one or None, with retries
+            working_server = process_server(server, country, delay=5 , max_retries=10)
 
-        if working_server:
-            # Append working server to the list
-            Working_List.append({country: working_server})
+            if working_server:
+                # Append working server to the list
+                Working_List.append({country: working_server})
 
-    # create a subFile
-    subscription_list = [
+        # create a subFile
+        subscription_list = [
+            
+        ]
+
+        for config in Working_List:
+            country = list(config.keys())[0]
+            server = list(config.values())[0]
+            
+            subscription_list.append(
+                SSHS8._modify_config_url(SSHS8,config_dict=server,
+                                        sni="www.ekb.eg",
+                                        title="WE LIMIT"))
+            
+            subscription_list.append(
+                SSHS8._modify_config_url(SSHS8, config_dict=server,
+                                        sni="www.ea.com", 
+                                        title="WE PS"))
+
+        create_subscription(subscription_list)
         
-    ]
-
-    for config in Working_List:
-        country = list(config.keys())[0]
-        server = list(config.values())[0]
-        
-        subscription_list.append(
-            SSHS8._modify_config_url(SSHS8,config_dict=server,
-                                     sni="www.ekb.eg",
-                                     title="WE LIMIT"))
-        
-        subscription_list.append(
-            SSHS8._modify_config_url(SSHS8, config_dict=server,
-                                     sni="www.ea.com", 
-                                     title="WE PS"))
-
-    create_subscription(subscription_list)
-    
-    with open(configs_path, 'w', encoding='utf-8') as f:
-            f.write(json.dumps(Working_List))
+        with open(configs_path, 'w', encoding='utf-8') as f:
+                f.write(json.dumps(Working_List))
