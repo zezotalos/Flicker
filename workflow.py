@@ -251,7 +251,7 @@ if __name__ == "__main__":
             subscription_list.append(
                 SSHS8._modify_config_url(SSHS8 , config_dict=server , sni="www.ekb.eg" , title="WE LIMIT"))
             subscription_list.append(
-                SSHS8._modify_config_url(SSHS8, config_dict=server , sni="www.ea.com" , title="WE PS"))
+                SSHS8._modify_config_url(SSHS8, config_dict=server , sni="ea.com" , title="WE PS"))
 
         create_subscription(subscription_list)
         
@@ -290,7 +290,7 @@ if __name__ == "__main__":
             
             subscription_list.append(
                 SSHS8._modify_config_url(SSHS8, config_dict=server,
-                                        sni="www.ea.com", 
+                                        sni="ea.com", 
                                         title="WE PS"))
 
         create_subscription(subscription_list)
