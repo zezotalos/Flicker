@@ -164,7 +164,7 @@ def check_v2ray_server(server):
 
 
 
-def process_server(server, country, max_retries=3):
+def process_server(server, country, delay=5 ,max_retries=3):
     """
     Tests the server connection. If it fails, retry creating a new server and testing it.
     Returns the working server or None if no working server found after max retries.
@@ -182,7 +182,8 @@ def process_server(server, country, max_retries=3):
 
     for attempt in range(max_retries):
         print(f"Retry {attempt + 1} of {max_retries} for {country}")
-        
+        time.sleep(delay)
+
         # Try creating a new server
         new_server_data = create_servers(country_codes=[country])
         new_server = list(new_server_data.values())[0]
@@ -266,7 +267,7 @@ if __name__ == "__main__":
         server = list(server_info.values())[0]
 
         # Process the server, either returning a working one or None, with retries
-        working_server = process_server(server, country, max_retries=5)
+        working_server = process_server(server, country, delay=5 , max_retries=10)
 
         if working_server:
             # Append working server to the list
