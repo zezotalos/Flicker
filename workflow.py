@@ -186,7 +186,9 @@ def process_server(server, country, delay=5 ,max_retries=3):
 
         # Try creating a new server
         new_server_data = create_servers(country_codes=[country])
-        new_server = list(new_server_data.values())[0]
+        
+        # ADD SUPPORT FOR MULTI SERVERS IN THE FUTURE
+        new_server = list(new_server_data[0].values())[0]
         
         # Test the newly created server
         if check_v2ray_server(new_server):
