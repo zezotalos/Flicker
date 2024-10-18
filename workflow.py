@@ -78,7 +78,7 @@ def create_servers(ids=None , country_codes=None):
             "country": "France",
         },
         {
-            "server_id": "108",
+            "server_id": "124",
             "country": "Germany",
         }
         # },
