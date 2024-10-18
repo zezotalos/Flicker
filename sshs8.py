@@ -46,7 +46,7 @@ class SSHS8:
             return True
         return False
 
-    def create_account(self, sni='' , title=''):
+    def create_account(self, country_code='' , sni='' , title=''):
         """Handles the account creation process."""
         if not self.get_initial_data():
             print("Error: Initial data or CSRF token not found.")
@@ -66,7 +66,7 @@ class SSHS8:
         final_response = self._post_account_data(json_data)
 
         if final_response:
-            return self._process_account_creation_response(final_response , sni , title)
+            return self._process_account_creation_response(final_response , country_code, sni , title)
         return None
 
     def _build_account_data(self):
@@ -138,7 +138,7 @@ class SSHS8:
             config_info = parsed_data['data']['data']['line']
             config_dict = self._parse_config_info(config_info)
 
-            modified_url = self._modify_config_url(config_dict , sni , title)
+            modified_url = self._modify_config_url(country_code , config_dict, sni , title)
             # print("Modified Config URL:")
             # print(modified_url)
 
