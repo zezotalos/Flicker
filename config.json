@@ -1,0 +1,37 @@
+{
+    "inbounds": [
+        {
+            "port": 1080,
+            "listen": "127.0.0.1",
+            "protocol": "socks",
+            "settings": {
+                "udp": true
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "trojan",
+            "settings": {
+                "servers": [
+                    {
+                        "address": "152.228.162.19",
+                        "port": 2083,
+                        "password": "u2878664731",
+                        "level": 8
+                    }
+                ]
+            },
+            "streamSettings": {
+                "security": "tls",
+                "tlsSettings": {
+                    "allowInsecure": true,
+                    "serverName": "152.228.162.19"
+                }
+            }
+        }
+    ],
+    "log": {
+        "loglevel": "warning"
+    }
+}
