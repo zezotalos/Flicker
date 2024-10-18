@@ -251,9 +251,9 @@ if __name__ == "__main__":
             country = list(config.keys())[0]
             server = list(config.values())[0]
             subscription_list.append(
-                SSHS8._modify_config_url(SSHS8 , config_dict=server , sni="www.ekb.eg" , title="WE LIMIT"))
+                SSHS8._modify_config_url(SSHS8 , country_code=country_code_map.get(country, "Unknown"), config_dict=server , sni="www.ekb.eg" , title="WE LIMIT"))
             subscription_list.append(
-                SSHS8._modify_config_url(SSHS8, config_dict=server , sni="ea.com" , title="WE PS"))
+                SSHS8._modify_config_url(SSHS8, country_code=country_code_map.get(country, "Unknown") ,config_dict=server , sni="ea.com" , title="WE PS"))
 
         create_subscription(subscription_list)
         
@@ -286,12 +286,14 @@ if __name__ == "__main__":
             server = list(config.values())[0]
             
             subscription_list.append(
-                SSHS8._modify_config_url(SSHS8,config_dict=server,
+                SSHS8._modify_config_url(SSHS8, country_code=country_code_map.get(country, "Unknown"),
+                                        config_dict=server,
                                         sni="www.ekb.eg",
                                         title="WE LIMIT"))
             
             subscription_list.append(
-                SSHS8._modify_config_url(SSHS8, config_dict=server,
+                SSHS8._modify_config_url(SSHS8, country_code=country_code_map.get(country, "Unknown"),
+                                        config_dict=server,
                                         sni="ea.com", 
                                         title="WE PS"))
 
