@@ -145,7 +145,7 @@ class SSHS8:
             return {"config_url": modified_url, "config_info": config_dict}
         return None
 
-    def _modify_config_url(self, config_dict , sni , title):
+    def _modify_config_url(self, country_code , config_dict , sni , title):
         """Modifies and rebuilds the configuration URL with new query parameters."""
         TYPE = "VLESS"
 
@@ -160,7 +160,7 @@ class SSHS8:
         new_url = urlunparse(parsed_url._replace(
             query=new_query,
             # fragment=f"(___ABOZEID___) ({TYPE} 🇩🇪) Expires ⚠ ({config_dict['Expired']})", 
-            fragment=f"𝔸𝔹𝕆ℤ𝔼𝕀𝔻 ({self._to_bold_sans_serif(title or '')} | {self._to_bold_sans_serif(config_dict['Expired'])} 🇩🇪)", 
+            fragment=f"𝔸𝔹𝕆ℤ𝔼𝕀𝔻 ({self._to_bold_sans_serif(title or '')} | {self._to_bold_sans_serif(config_dict['Expired'])} {self._country_code_to_emoji(country_code)})", 
             netloc=f"{config_dict.get('User ID') or config_dict.get('Key')}@{config_dict['IP/Host']}:{config_dict.get('Port TLS') or config_dict.get('Port')}"
         ))
         return new_url
@@ -199,3 +199,9 @@ class SSHS8:
 
         # Convert each character in the input text
         return ''.join(bold_sans_serif_map.get(char, char) for char in text)
+
+    @staticmethod
+    def _country_code_to_emoji(country_code):
+        # Convert the country code to uppercase
+        code_points = [ord(char) + 0x1F1E6 - ord('A') for char in country_code.upper()]
+        return chr(code_points[0]) + chr(code_points[1])
