@@ -23,11 +23,11 @@ country_code_map = {
 }
 
 
-def retry_create_account(v2ray_agent, retries=3, delay=5):
+def retry_create_account(v2ray_agent, country_code , retries=3, delay=5):
     """Retries account creation with the specified number of retries and delay between attempts."""
     attempt = 0
     while attempt < retries:
-        account = v2ray_agent.create_account()
+        account = v2ray_agent.create_account(country_code=country_code)
         if account is not None or account.get("IP/Host") != '':
             return account
         else:
@@ -111,17 +111,20 @@ def create_servers(ids=None , country_codes=None):
     # Create the result dictionary with country codes as keys
     
     for server in selected_servers:
+        
+        country = server['country']
+        country_code = country_code_map.get(country, "Unknown")  # Default to "Unknown" if country is not in the map
+    
         result = {}
         V2RAY_AGENT = SSHS8(f"https://vpneurope.sshs8.com/accounts/TROJAN/{server['server_id']}")  # UK SERVER AS TEST
         
-        account = retry_create_account(V2RAY_AGENT, retries=5, delay=5)
+        account = retry_create_account(V2RAY_AGENT, country_code=country_code, retries=5, delay=5)
         
         if account is None:
             print(f"Failed to create an account for server {server['server_id']}. Skipping this server.")
             continue  # Skip this server if account creation failed
         
-        country = server['country']
-        country_code = country_code_map.get(country, "Unknown")  # Default to "Unknown" if country is not in the map
+
         result[country_code] = account['config_info']  # Store the server info with the country code as the key
         servers.append(result)
     
@@ -248,12 +251,12 @@ if __name__ == "__main__":
         
      
         for config in Working_List:
-            country = list(config.keys())[0]
+            country_code = list(config.keys())[0]
             server = list(config.values())[0]
             subscription_list.append(
-                SSHS8._modify_config_url(SSHS8 , country_code=country_code_map.get(country, "Unknown"), config_dict=server , sni="www.ekb.eg" , title="WE LIMIT"))
+                SSHS8._modify_config_url(SSHS8 , country_code=country_code, config_dict=server , sni="www.ekb.eg" , title="WE LIMIT"))
             subscription_list.append(
-                SSHS8._modify_config_url(SSHS8, country_code=country_code_map.get(country, "Unknown") ,config_dict=server , sni="ea.com" , title="WE PS"))
+                SSHS8._modify_config_url(SSHS8, country_code=country_code ,config_dict=server , sni="ea.com" , title="WE PS"))
 
         create_subscription(subscription_list)
         
@@ -282,17 +285,17 @@ if __name__ == "__main__":
         ]
 
         for config in Working_List:
-            country = list(config.keys())[0]
+            country_code = list(config.keys())[0]
             server = list(config.values())[0]
             
             subscription_list.append(
-                SSHS8._modify_config_url(SSHS8, country_code=country_code_map.get(country, "Unknown"),
+                SSHS8._modify_config_url(SSHS8, country_code=country_code,
                                         config_dict=server,
                                         sni="www.ekb.eg",
                                         title="WE LIMIT"))
             
             subscription_list.append(
-                SSHS8._modify_config_url(SSHS8, country_code=country_code_map.get(country, "Unknown"),
+                SSHS8._modify_config_url(SSHS8, country_code=country_code,
                                         config_dict=server,
                                         sni="ea.com", 
                                         title="WE PS"))
