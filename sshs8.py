@@ -46,7 +46,7 @@ class SSHS8:
             return True
         return False
 
-    def create_account(self, country_code='' , sni='' , title=''):
+    def create_account(self, country_code='UNKNOWN' , sni='' , title=''):
         """Handles the account creation process."""
         if not self.get_initial_data():
             print("Error: Initial data or CSRF token not found.")
