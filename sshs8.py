@@ -127,7 +127,7 @@ class SSHS8:
         }
         return json_data
 
-    def _process_account_creation_response(self, final_response , sni , title):
+    def _process_account_creation_response(self, final_response , country_code , sni , title):
         """Extracts and processes the account configuration information."""
         account_data = final_response.get('dom')
         initial_data_match = re.search(r'wire:initial-data="([^"]+)"', account_data)
