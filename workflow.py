@@ -73,19 +73,19 @@ def create_servers(ids=None , country_codes=None):
             "server_id": "20",
             "country": "United Kingdom",
         },
-        {
-            "server_id": "116",
-            "country": "France",
-        },
-        {
-            "server_id": "124",
-            "country": "Germany",
-        }
+        # {
+        #     "server_id": "116",
+        #     "country": "France",
         # },
         # {
-        #     "server_id": "100",
+        #     "server_id": "124",
         #     "country": "Germany",
         # }
+        # },
+        {
+            "server_id": "108",
+            "country": "Germany",
+        }
     ]
 
     if country_codes:
@@ -210,7 +210,7 @@ if __name__ == "__main__":
 
     if not os.path.exists(configs_path):
         
-        servers = create_servers(country_codes=["FR"])
+        servers = create_servers(country_codes=["DE"])
 
         # TEST ALL SERVER BEFORE Putting IT IN THE SUB FILE 
         # Configuration parameters
