@@ -1,5 +1,5 @@
 #profile-title: base64:8J+MgCDwnZeU8J2XlfCdl6LwnZet8J2XmPCdl5zwnZeXIPCfjIA=
 #profile-update-interval: 1
 #subscription-userinfo: upload=0; download=0; total=10737418240000000; expire=2546249531
-trojan://u1466528793@57.129.41.216:2083?sni=www.ekb.eg&allowInsecure=true#𝔸𝔹𝕆ℤ𝔼𝕀𝔻 (𝗪𝗘 𝗟𝗜𝗠𝗜𝗧 | 𝟮𝟬𝟮𝟱-𝟬𝟱-𝟬𝟳 🇩🇪)
-trojan://u1466528793@57.129.41.216:2083?sni=ea.com&allowInsecure=true#𝔸𝔹𝕆ℤ𝔼𝕀𝔻 (𝗪𝗘 𝗣𝗦 | 𝟮𝟬𝟮𝟱-𝟬𝟱-𝟬𝟳 🇩🇪)
+trojan://u9243003757@57.129.41.216:2083?sni=www.ekb.eg&allowInsecure=true#𝔸𝔹𝕆ℤ𝔼𝕀𝔻 (𝗪𝗘 𝗟𝗜𝗠𝗜𝗧 | 𝟮𝟬𝟮𝟱-𝟬𝟱-𝟬𝟳 🇩🇪)
+trojan://u9243003757@57.129.41.216:2083?sni=ea.com&allowInsecure=true#𝔸𝔹𝕆ℤ𝔼𝕀𝔻 (𝗪𝗘 𝗣𝗦 | 𝟮𝟬𝟮𝟱-𝟬𝟱-𝟬𝟳 🇩🇪)
